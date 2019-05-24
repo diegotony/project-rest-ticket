@@ -1,3 +1,4 @@
+require('./config/config')
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -13,7 +14,7 @@ app.use(bodyParser.json());
 app.use(require('./routes/index'));
 
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
     // console.log("NODEJS LISTENING ", process.env.PORT);    
     console.log("NODEJS WORKING ");
 

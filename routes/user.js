@@ -8,7 +8,6 @@ app.get('/users', (req, res) => {
 
 app.post('/users', (req, res) => {
     body = req.body
-    console.log(body)
     user = {
         name: body.name
     }

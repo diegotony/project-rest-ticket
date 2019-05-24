@@ -5,12 +5,12 @@ const app = express();
 
 
 app.use(cors());
-app.use(require('./routes/index'));
+
 app.use(bodyParser.urlencoded({
     extended: false
 }))
 app.use(bodyParser.json());
-
+app.use(require('./routes/index'));
 
 
 app.listen(3000, () => {

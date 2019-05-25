@@ -39,19 +39,6 @@ Event.init({
     modelName: "company"
 });
 
-Company.hasMany(Rol, {
-    foreignKey: "company_idcompany"
-});
-
-
-Company.hasOne(Wallet, {
-    foreignKey: "company_idcompany"
-});
-
-Company.hasMany(Service, {
-    foreignKey: "company_idcompany"
-})
-
 
 
 sequelize

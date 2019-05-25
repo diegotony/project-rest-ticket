@@ -9,7 +9,7 @@ app.get('/users', (req, res) => {
 app.post('/users', (req, res) => {
     let body = req.body
 
-    user = {
+    let user = {
         name: body.name,
         surname: body.surname,
         dni: body.dni,
@@ -20,10 +20,13 @@ app.post('/users', (req, res) => {
 
 app.put('/users/:id', (req, res) => {
     let body = req.body
-    user = {
-        name: body.name
+    let user = {
+        name: body.name,
+        surname: body.surname,
+        dni: body.dni,
+        pass: body.pass
     }
-    User.update(body, {
+    User.update(user, {
         where: {
             id: req.params.id,
         }

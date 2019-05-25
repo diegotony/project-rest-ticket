@@ -10,7 +10,7 @@ app.get('/rols', (req, res) => {
 app.post('/rols', (req, res) => {
     let body = req.body
 
-    rol = {
+    let rol = {
         name: body.name
     }
     Rol.create(rol).then(rol => res.json(rol))
@@ -18,7 +18,7 @@ app.post('/rols', (req, res) => {
 
 app.put('/rols/:id', (req, res) => {
     let body = req.body
-    rol = {
+    let rol = {
         name: body.name
     }
     Rol.update(body, {

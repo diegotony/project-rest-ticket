@@ -33,21 +33,8 @@ sequelize
         force: true
     })
     .then(() => {
-        console.log(`tables rol created!`)
+        console.log(`tables transactions created!`)
     })
-    .then(() => {
-        Rol.create({
-                name: "ADMIN",
-                company_idcompany: 1
-            }),
-            Rol.create({
-                name: "VENDEDOR",
-                company_idcompany: 1
-            }),
-            Rol.create({
-                name: "USER",
-                company_idcompany: 1
-            });
-    });
+    .then(() => {});
 
 module.exports = Transaction;

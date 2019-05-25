@@ -49,10 +49,10 @@ sequelize
         console.log(`tables company created!`)
     })
     .then(() => {
-        Company.create({
-            name: "FERIA",
-            account_number: "111111111"
-        })
+        // Company.create({
+        //     name: "FERIA",
+        //     account_number: "111111111"
+        // })
     });
 
 module.exports = Company;

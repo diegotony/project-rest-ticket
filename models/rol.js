@@ -48,18 +48,18 @@ sequelize
         console.log(`tables rol created!`)
     })
     .then(() => {
-        Rol.create({
-                name: "ADMIN",
-                company_idcompany: 1
-            }),
-            Rol.create({
-                name: "VENDEDOR",
-                company_idcompany: 1
-            }),
-            Rol.create({
-                name: "USER",
-                company_idcompany: 1
-            });
+        // Rol.create({
+        //         name: "ADMIN",
+        //         company_idcompany: 1
+        //     }),
+        //     Rol.create({
+        //         name: "VENDEDOR",
+        //         company_idcompany: 1
+        //     }),
+        //     Rol.create({
+        //         name: "USER",
+        //         company_idcompany: 1
+        //     });
     });
 
 module.exports = Rol;

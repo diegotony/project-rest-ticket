@@ -1,8 +1,6 @@
 const express = require('express')
 const app = express()
-
-
-const Rol_has = require('../models/rol_has')
+const Rol_has = require('../models/rol_has_user')
 
 app.get('/rolhas', (req, res) => {
     Rol_has.findAll().then(rols_has => res.json(rols_has))
@@ -11,7 +9,7 @@ app.get('/rolhas', (req, res) => {
 app.post('/rolhas', (req, res) => {
     let body = req.body
 
-    rol_has = {
+    let rol_has = {
         rol_idrol: body.rol_idrol,
         rol_iduser: body.rol_iduser
     }
@@ -20,7 +18,7 @@ app.post('/rolhas', (req, res) => {
 
 app.put('/rolhas/:id', (req, res) => {
     let body = req.body
-    rol_has = {
+    let rol_has = {
         rol_idrol: body.rol_idrol,
         rol_iduser: body.rol_iduser
     }

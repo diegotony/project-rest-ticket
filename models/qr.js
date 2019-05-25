@@ -10,7 +10,7 @@ Qr.init({
         primaryKey: true,
         autoIncrement: true
     },
-    name: {
+    code: {
         type: Sequelize.STRING,
         validate: {
             notEmpty: true

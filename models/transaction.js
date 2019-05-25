@@ -2,43 +2,31 @@ const Sequelize = require("sequelize");
 const Model = Sequelize.Model;
 const sequelize = require("../sequelize");
 const type = Sequelize.DataTypes;
-const Rol_has_user = require("./rol_has_user");
-const Privilegie = require('./privilegies')
-const Rol_has_service = require('./rol_has_service')
-class Rol extends Model {}
-Rol.init({
+class Transaction extends Model {}
+Transaction.init({
     id: {
         type: type.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    name: {
-        type: Sequelize.STRING,
+    value: {
+        type: Sequelize.INTEGER,
+        validate: {
+            notEmpty: true
+        }
+    },
+    timestamps: {
+        type: Sequelize.TIME,
         validate: {
             notEmpty: true
         }
     }
 }, {
     sequelize,
-    modelName: "rol"
-});
-
-Rol.hasMany(Rol_has_user, {
-    foreignKey: "rol_idrol"
-});
-
-Rol.hasMany(Privilegie, {
-    foreignKey: "rol_idrol"
-});
-
-Rol.hasMany(Rol_has_service, {
-    foreignKey: "rol_idrol"
+    modelName: "transaction"
 });
 
 
-// Rol.hasOne(Company, {
-//     foreignKey: "company_idcompany"
-// })
 
 sequelize
     .sync({
@@ -62,4 +50,4 @@ sequelize
             });
     });
 
-module.exports = Rol;
+module.exports = Transaction;

@@ -10,7 +10,10 @@ app.post('/users', (req, res) => {
     let body = req.body
 
     user = {
-        name: body.name
+        name: body.name,
+        surname: body.surname,
+        dni: body.dni,
+        pass: body.pass
     }
     User.create(user).then(user => res.json(user))
 });

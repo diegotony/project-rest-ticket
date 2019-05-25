@@ -3,16 +3,16 @@ const Model = Sequelize.Model;
 const sequelize = require('../sequelize')
 const type = Sequelize.DataTypes;
 
-class Rol_has extends Model {}
-Rol_has.init({
+class Rol_has_user extends Model {}
+Rol_has_user.init({
     id: {
         type: type.INTEGER,
         primaryKey: true,
         autoIncrement: true
-    },
+    }
 }, {
     sequelize,
-    modelName: 'rol_has'
+    modelName: 'rol_has_user'
 });
 
 
@@ -22,7 +22,7 @@ sequelize.sync({
         force: true
     })
     .then(() => {
-        console.log(`Database & tables created!`)
+        console.log(`tables rol_has_user created!`)
     }).then(() => {
         // Rol_has.create({
         //         rol_idrol: 1,
@@ -34,4 +34,4 @@ sequelize.sync({
         //     })
     })
 
-module.exports = Rol_has
+module.exports = Rol_has_user

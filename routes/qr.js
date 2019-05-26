@@ -17,7 +17,7 @@ app.post('/qrs', (req, res) => {
     let qr = {
         code: body.code,
         path_image: body.path_image,
-        active: body.path_image,
+        active: body.active,
         user_iduser: body.user_iduser
     }
     Qr.create(qr).then(result => res.json(result))

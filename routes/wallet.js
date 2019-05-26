@@ -6,6 +6,16 @@ app.get('/wallets', (req, res) => {
     Wallet.findAll().then(result => res.json(result))
 })
 
+
+app.get('/wallets/user/:id', (req, res) => {
+    Wallet.findAll({
+        where: {
+            user_iduser: req.params.id
+        }
+    }).then(result => res.json(result))
+
+});
+
 app.post('/wallets', (req, res) => {
     let body = req.body
 

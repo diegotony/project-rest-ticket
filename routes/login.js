@@ -26,16 +26,16 @@ app.post('/login', (req, res) => {
                 });
 
             } else {
-                let token = jwt.sign({
-                    usuario: user
-                }, process.env.SEED, {
-                    expiresIn: process.env.CADUCIDAD_TOKEN
-                });
+                // let token = jwt.sign({
+                //     usuario: user
+                // }, process.env.SEED, {
+                //     expiresIn: process.env.CADUCIDAD_TOKEN
+                // });
 
                 res.status(200).json({
                     ok: true,
-                    user,
-                    token
+                    user: user.id,
+                    //token
 
                 });
 

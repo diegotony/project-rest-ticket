@@ -7,11 +7,11 @@ const {
     verificaToken
 } = require('../middleware/auth');
 
-app.get('/companies', [verificaToken], (req, res) => {
+app.get('/companies', (req, res) => {
     Company.findAll().then(result => res.json(result))
 })
 
-app.post('/companies', [verificaToken], (req, res) => {
+app.post('/companies', (req, res) => {
     let body = req.body
 
     let company = {
@@ -20,7 +20,7 @@ app.post('/companies', [verificaToken], (req, res) => {
     Company.create(company).then(result => res.json(result))
 });
 
-app.put('/companies/:id', [verificaToken], (req, res) => {
+app.put('/companies/:id', (req, res) => {
     let body = req.body
     let company = {
         name: body.name
@@ -36,7 +36,7 @@ app.put('/companies/:id', [verificaToken], (req, res) => {
             })
         })
 });
-app.delete('/companies/:id', [verificaToken], (req, res) => {
+app.delete('/companies/:id', (req, res) => {
     Company.destroy({
         where: {
             id: req.params.id,

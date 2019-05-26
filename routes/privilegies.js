@@ -7,11 +7,11 @@ const {
 } = require('../middleware/auth');
 
 
-app.get('/privilegies', [verificaToken], (req, res) => {
+app.get('/privilegies', (req, res) => {
     Privilegies.findAll().then(result => res.json(result))
 })
 
-app.post('/privilegies', [verificaToken], (req, res) => {
+app.post('/privilegies', (req, res) => {
     let body = req.body
 
     let privilegio = {
@@ -21,7 +21,7 @@ app.post('/privilegies', [verificaToken], (req, res) => {
     Privilegies.create(privilegio).then(result => res.json(result))
 });
 
-app.put('/privilegies/:id', [verificaToken], (req, res) => {
+app.put('/privilegies/:id', (req, res) => {
     let body = req.body
     let privilegio = {
         name: body.name,
@@ -38,7 +38,7 @@ app.put('/privilegies/:id', [verificaToken], (req, res) => {
             })
         })
 });
-app.delete('/privilegies/:id', [verificaToken], (req, res) => {
+app.delete('/privilegies/:id', (req, res) => {
     Privilegies.destroy({
         where: {
             id: req.params.id,

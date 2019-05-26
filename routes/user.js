@@ -8,13 +8,13 @@ const {
 } = require('../middleware/auth');
 
 
-app.get('/users', [verificaToken], (req, res) => {
+app.get('/users', (req, res) => {
     User.findAll().then(users => res.json(users))
 })
 
 
 
-app.post('/users', [verificaToken], (req, res) => {
+app.post('/users', (req, res) => {
     let body = req.body
 
     let user = {
@@ -27,7 +27,7 @@ app.post('/users', [verificaToken], (req, res) => {
     User.create(user).then(user => res.json(user))
 });
 
-app.put('/users/:id', [verificaToken], (req, res) => {
+app.put('/users/:id', (req, res) => {
     let body = req.body
     let user = {
         name: body.name,
@@ -46,7 +46,7 @@ app.put('/users/:id', [verificaToken], (req, res) => {
             })
         })
 });
-app.delete('/users/:id', [verificaToken], (req, res) => {
+app.delete('/users/:id', (req, res) => {
     let body = req.body
 
     User.destroy({

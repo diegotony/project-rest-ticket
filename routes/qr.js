@@ -7,11 +7,11 @@ const {
 } = require('../middleware/auth');
 
 
-app.get('/qrs', [verificaToken], (req, res) => {
+app.get('/qrs', (req, res) => {
     Qr.findAll().then(result => res.json(result))
 })
 
-app.post('/qrs', [verificaToken], (req, res) => {
+app.post('/qrs', (req, res) => {
     let body = req.body
 
     let qr = {
@@ -23,7 +23,7 @@ app.post('/qrs', [verificaToken], (req, res) => {
     Qr.create(qr).then(result => res.json(result))
 });
 
-app.put('/qrs/:id', [verificaToken], (req, res) => {
+app.put('/qrs/:id', (req, res) => {
     let body = req.body
     let qr = {
         code: body.code,
@@ -42,7 +42,7 @@ app.put('/qrs/:id', [verificaToken], (req, res) => {
             })
         })
 });
-app.delete('/qrs/:id', [verificaToken], (req, res) => {
+app.delete('/qrs/:id', (req, res) => {
     Qr.destroy({
         where: {
             id: req.params.id,

@@ -6,6 +6,9 @@ const Rol_has_user = require("./rol_has_user");
 const Qr = require("./qr")
 const Wallet = require('./wallet')
 const Seller_Account = require('./seller_account')
+
+const bcrypt = require('bcrypt');
+
 class User extends Model {}
 User.init({
     id: {
@@ -72,28 +75,30 @@ sequelize
     })
     .then(() => {
         User.create({
-                name: "EL Papu",
+                name: "papu",
                 surname: "QPensabas",
                 dni: "0000014000",
-                pass: "lol"
+                pass: bcrypt.hashSync("lol", 10)
             }),
             User.create({
                 name: "EL Papu",
                 surname: "QPensabas",
                 dni: "0000015000",
-                pass: "lol"
+                pass: bcrypt.hashSync("lol", 10)
             }),
             User.create({
                 name: "EL Papu",
                 surname: "QPensabas",
                 dni: "0000016000",
-                pass: "lol"
+                pass: bcrypt.hashSync("lol", 10)
             }),
             User.create({
                 name: "EL Papu",
                 surname: "QPensabas",
                 dni: "0000017000",
-                pass: "lol"
+                pass: bcrypt.hashSync("lol", 10)
+                // TODO
+                // lol
             });
     });
 

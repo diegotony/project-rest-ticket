@@ -1,24 +1,33 @@
 const express = require('express')
 const app = express()
 const User = require('../models/user')
+const bcrypt = require('bcrypt');
 
-app.get('/users', (req, res) => {
+const {
+    verificaToken
+} = require('../middleware/auth');
+
+
+app.get('/users', [verificaToken], (req, res) => {
     User.findAll().then(users => res.json(users))
 })
 
-app.post('/users', (req, res) => {
+
+
+app.post('/users', [verificaToken], (req, res) => {
     let body = req.body
 
     let user = {
         name: body.name,
         surname: body.surname,
         dni: body.dni,
-        pass: body.pass
+        pass: bcrypt.hashSync(body.pass, 10)
+
     }
     User.create(user).then(user => res.json(user))
 });
 
-app.put('/users/:id', (req, res) => {
+app.put('/users/:id', [verificaToken], (req, res) => {
     let body = req.body
     let user = {
         name: body.name,
@@ -37,7 +46,7 @@ app.put('/users/:id', (req, res) => {
             })
         })
 });
-app.delete('/users/:id', (req, res) => {
+app.delete('/users/:id', [verificaToken], (req, res) => {
     let body = req.body
 
     User.destroy({

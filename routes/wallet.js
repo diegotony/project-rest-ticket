@@ -2,12 +2,18 @@ const express = require('express')
 const app = express()
 const Wallet = require('../models/wallet')
 
-app.get('/wallets', (req, res) => {
+
+const {
+    verificaToken
+} = require('../middleware/auth');
+
+
+app.get('/wallets', [verificaToken], (req, res) => {
     Wallet.findAll().then(result => res.json(result))
 })
 
 
-app.get('/wallets/user/:id', (req, res) => {
+app.get('/wallets/user/:id', [verificaToken], (req, res) => {
     Wallet.findAll({
         where: {
             user_iduser: req.params.id
@@ -16,7 +22,7 @@ app.get('/wallets/user/:id', (req, res) => {
 
 });
 
-app.post('/wallets', (req, res) => {
+app.post('/wallets', [verificaToken], (req, res) => {
     let body = req.body
 
     let wallet = {
@@ -28,7 +34,7 @@ app.post('/wallets', (req, res) => {
     Wallet.create(wallet).then(result => res.json(result))
 });
 
-app.put('/wallets/:id', (req, res) => {
+app.put('/wallets/:id', [verificaToken], (req, res) => {
     let body = req.body
     let wallet = {
         wallet_number: body.wallet_number,
@@ -47,7 +53,7 @@ app.put('/wallets/:id', (req, res) => {
             })
         })
 });
-app.delete('/wallets/:id', (req, res) => {
+app.delete('/wallets/:id', [verificaToken], (req, res) => {
     Wallet.destroy({
         where: {
             id: req.params.id,

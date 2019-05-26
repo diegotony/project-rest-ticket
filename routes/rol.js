@@ -16,7 +16,8 @@ app.post('/rols', (req, res) => {
     let body = req.body
 
     let rol = {
-        name: body.name
+        name: body.name,
+        company_idcompany: body.company_idcompany
     }
     Rol.create(rol).then(rol => res.json(rol))
 });
@@ -24,7 +25,8 @@ app.post('/rols', (req, res) => {
 app.put('/rols/:id', (req, res) => {
     let body = req.body
     let rol = {
-        name: body.name
+        name: body.name,
+        company_idcompany: body.company_idcompany
     }
     Rol.update(body, {
         where: {

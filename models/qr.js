@@ -23,7 +23,7 @@ Qr.init({
         }
     },
     active: {
-        type: Sequelize.STRING,
+        type: Sequelize.BOOLEAN,
         validate: {
             notEmpty: true
         }

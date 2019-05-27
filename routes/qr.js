@@ -11,6 +11,17 @@ app.get('/qrs', (req, res) => {
     Qr.findAll().then(result => res.json(result))
 })
 
+
+app.get('/qrs/user/:id', (req, res) => {
+    Qr.findAll({
+        where: {
+            user_iduser: req.params.id,
+            active: true
+
+        }
+    }).then(result => res.json(result))
+})
+
 app.post('/qrs', (req, res) => {
     let body = req.body
 

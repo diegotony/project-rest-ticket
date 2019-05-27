@@ -13,6 +13,25 @@ app.get('/wallets', (req, res) => {
 })
 
 
+
+
+app.get('/wallets/user/:idu/:idc', (req, res) => {
+    let body = req.body
+
+    Wallet.findOne({
+        where: {
+            user_iduser: req.params.idu,
+            company_idcompany: req.params.idc
+        }
+    }).then(
+        result => {
+            res.json({
+                result
+            })
+        })
+});
+
+
 app.get('/wallets/user/:id', (req, res) => {
     Wallet.findAll({
         where: {
@@ -80,8 +99,11 @@ app.put('/wallets/user/:idu/:idc', (req, res) => {
             res.json({
                 result
             })
-        })
+        });
 });
+
+
+
 
 app.delete('/wallets/:id', (req, res) => {
     Wallet.destroy({

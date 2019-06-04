@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize('eticket', 'root', '12345Root', {
-    host: 'eticketidentifier.cv4optoxd7l3.us-east-1.rds.amazonaws.com',
+    host: 'ticketidentifier.cv4optoxd7l3.us-east-1.rds.amazonaws.com',
     dialect: 'postgres'
 });
 

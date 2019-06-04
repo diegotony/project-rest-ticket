@@ -8,11 +8,11 @@ const {
 
 
 
-app.get('/servicies', (req, res) => {
+app.get('/servicies',verificaToken, (req, res) => {
     Service.findAll().then(result => res.json(result))
 })
 
-app.post('/servicies', (req, res) => {
+app.post('/servicies', verificaToken,(req, res) => {
     let body = req.body
 
     let service = {
@@ -22,7 +22,7 @@ app.post('/servicies', (req, res) => {
     Service.create(service).then(result => res.json(result))
 });
 
-app.put('/servicies/:id', (req, res) => {
+app.put('/servicies/:id', verificaToken,(req, res) => {
     let body = req.body
     let service = {
         name: body.name,
@@ -39,7 +39,7 @@ app.put('/servicies/:id', (req, res) => {
             })
         })
 });
-app.delete('/servicies/:id', (req, res) => {
+app.delete('/servicies/:id', verificaToken,(req, res) => {
     Service.destroy({
         where: {
             id: req.params.id,

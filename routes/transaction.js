@@ -8,11 +8,11 @@ const {
 } = require('../middleware/auth');
 
 
-app.get('/transactions', (req, res) => {
+app.get('/transactions', verificaToken,(req, res) => {
     Transactions.findAll().then(result => res.json(result))
 })
 
-app.post('/transactions', (req, res) => {
+app.post('/transactions',  verificaToken,(req, res) => {
     let body = req.body
 
     let transaction = {
@@ -24,7 +24,7 @@ app.post('/transactions', (req, res) => {
     Transactions.create(transaction).then(result => res.json(result))
 });
 
-app.put('/transactions/:id', (req, res) => {
+app.put('/transactions/:id', verificaToken, (req, res) => {
     let body = req.body
     let transaction = {
         wallet_idwallet: body.wallet_idwallet,
@@ -43,7 +43,7 @@ app.put('/transactions/:id', (req, res) => {
             })
         })
 });
-app.delete('/transactions/:id', (req, res) => {
+app.delete('/transactions/:id', verificaToken, (req, res) => {
     Transactions.destroy({
         where: {
             id: req.params.id,
@@ -54,4 +54,4 @@ app.delete('/transactions/:id', (req, res) => {
         })
     );
 });
-module.exports = app
+module.exports = app;

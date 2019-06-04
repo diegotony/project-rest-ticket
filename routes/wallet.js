@@ -8,14 +8,14 @@ const {
 } = require('../middleware/auth');
 
 
-app.get('/wallets', (req, res) => {
+app.get('/wallets', verificaToken, (req, res) => {
     Wallet.findAll().then(result => res.json(result))
 })
 
 
 
 
-app.get('/wallets/user/:idu/:idc', (req, res) => {
+app.get('/wallets/user/:idu/:idc', verificaToken, (req, res) => {
     let body = req.body
 
     Wallet.findOne({
@@ -32,7 +32,7 @@ app.get('/wallets/user/:idu/:idc', (req, res) => {
 });
 
 
-app.get('/wallets/user/:id', (req, res) => {
+app.get('/wallets/user/:id', verificaToken, (req, res) => {
     Wallet.findAll({
         where: {
             user_iduser: req.params.id
@@ -41,7 +41,7 @@ app.get('/wallets/user/:id', (req, res) => {
 
 });
 
-app.post('/wallets/user/:id', (req, res) => {
+app.post('/wallets/user/:id', verificaToken, (req, res) => {
     Wallet.findAll({
         where: {
             user_iduser: req.params.id
@@ -50,7 +50,7 @@ app.post('/wallets/user/:id', (req, res) => {
 
 });
 
-app.post('/wallets', (req, res) => {
+app.post('/wallets', verificaToken, (req, res) => {
     let body = req.body
 
     let wallet = {
@@ -62,7 +62,7 @@ app.post('/wallets', (req, res) => {
     Wallet.create(wallet).then(result => res.json(result))
 });
 
-app.put('/wallets/:id', (req, res) => {
+app.put('/wallets/:id', verificaToken, (req, res) => {
     let body = req.body
     let wallet = {
         wallet_number: body.wallet_number,
@@ -84,7 +84,7 @@ app.put('/wallets/:id', (req, res) => {
 
 
 
-app.put('/wallets/user/:idu/:idc', (req, res) => {
+app.put('/wallets/user/:idu/:idc', verificaToken, (req, res) => {
     let body = req.body
     let wallet = {
         balance: body.balance,

@@ -22,11 +22,12 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.0",
+    "helmet": "^3.18.0",
     "jshint": "^2.10.2",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^1.6.5",
     "pg": "^7.11.0",
-    "pg-hstore": "^2.3.2",
+    "pg-hstore": "^2.3.3",
     "sequelize": "^5.8.6"
   },
   "devDependencies": {},

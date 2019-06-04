@@ -2,6 +2,7 @@ require('./config/config')
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const helmet = require('helmet')
 const app = express();
 
 
@@ -12,7 +13,7 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json());
 app.use(require('./routes/index'));
-
+app.use(helmet())
 
 app.listen(process.env.PORT, () => {
     // console.log("NODEJS LISTENING ", process.env.PORT);    

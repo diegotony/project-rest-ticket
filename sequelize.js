@@ -4,6 +4,8 @@ const sequelize = new Sequelize('eticket', 'root', '12345Root', {
     dialect: 'postgres'
 });
 
+
+
 sequelize.authenticate().then(() => {
     console.log('Connection has been established successfully.');
 }).catch(err => {

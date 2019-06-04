@@ -14,7 +14,7 @@ app.get('/users',  verificaToken,(req, res) => {
 
 
 
-app.post('/users',  verificaToken,(req, res) => {
+app.post('/users',  (req, res) => {
     let body = req.body
 
     let user = {

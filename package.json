@@ -30,5 +30,5 @@
     "sequelize": "^5.8.6"
   },
   "devDependencies": {},
-  "description": ""
+  "description": "etickets system"
 }

@@ -8,11 +8,11 @@ const {
 } = require('../middleware/auth');
 
 
-app.get('/rolhasservice', (req, res) => {
+app.get('/rolhasservice',verificaToken, (req, res) => {
     Rol_has_service.findAll().then(result => res.json(result))
 })
 
-app.post('/rolhasservice', (req, res) => {
+app.post('/rolhasservice',verificaToken, (req, res) => {
     let body = req.body
 
     let rol_has_service = {
@@ -22,7 +22,7 @@ app.post('/rolhasservice', (req, res) => {
     Rol_has_service.create(rol_has_service).then(result => res.json(result))
 });
 
-app.put('/rolhasservice/:id', (req, res) => {
+app.put('/rolhasservice/:id', verificaToken,(req, res) => {
     let body = req.body
     let rol_has_service = {
         rol_idrol: body.rol_idrol,
@@ -39,7 +39,7 @@ app.put('/rolhasservice/:id', (req, res) => {
             })
         })
 });
-app.delete('/rolhasservice/:id', (req, res) => {
+app.delete('/rolhasservice/:id', verificaToken,(req, res) => {
     Rol_has_service.destroy({
         where: {
             id: req.params.id,
@@ -50,4 +50,4 @@ app.delete('/rolhasservice/:id', (req, res) => {
         })
     );
 });
-module.exports = app
+module.exports = app;

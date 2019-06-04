@@ -1,30 +1,37 @@
-const express = require('express')
-const app = express()
-const Company = require('../models/company')
+// jshint esversion:6
+const express = require('express');
+const app = express();
+const Company = require('../models/company');
 
 
 const {
     verificaToken
 } = require('../middleware/auth');
 
-app.get('/companies', (req, res) => {
-    Company.findAll().then(result => res.json(result))
-})
 
-app.post('/companies', (req, res) => {
-    let body = req.body
+// GET ALL COMPANIES
+
+app.get('/companies', verificaToken, (req, res) => {
+    Company.findAll().then(result => res.json(result))
+});
+
+// POST ALL COMPANIES
+
+app.post('/companies', verificaToken, (req, res) => {
+    let body = req.body;
 
     let company = {
         name: body.name,
-    }
+    };
     Company.create(company).then(result => res.json(result))
 });
 
-app.put('/companies/:id', (req, res) => {
-    let body = req.body
+// PUT A COMPANY
+app.put('/companies/:id', verificaToken, (req, res) => {
+    let body = req.body;
     let company = {
         name: body.name
-    }
+    };
     Company.update(company, {
         where: {
             id: req.params.id,
@@ -33,9 +40,12 @@ app.put('/companies/:id', (req, res) => {
         result => {
             res.json({
                 result
-            })
-        })
+            });
+        });
 });
+
+// DELETE A COMPANY
+
 app.delete('/companies/:id', (req, res) => {
     Company.destroy({
         where: {
@@ -47,4 +57,4 @@ app.delete('/companies/:id', (req, res) => {
         })
     );
 });
-module.exports = app
+module.exports = app;

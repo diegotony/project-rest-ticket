@@ -1,18 +1,18 @@
-const express = require('express')
-const app = express()
-const Qr = require('../models/qr')
+const express = require('express');
+const app = express();
+const Qr = require('../models/qr');
 
 const {
     verificaToken
 } = require('../middleware/auth');
 
 
-app.get('/qrs', (req, res) => {
+app.get('/qrs',verificaToken, (req, res) => {
     Qr.findAll().then(result => res.json(result))
 })
 
 
-app.get('/qrs/user/:id', (req, res) => {
+app.get('/qrs/user/:id',verificaToken, (req, res) => {
     Qr.findAll({
         where: {
             user_iduser: req.params.id,
@@ -22,7 +22,7 @@ app.get('/qrs/user/:id', (req, res) => {
     }).then(result => res.json(result))
 })
 
-app.post('/qrs', (req, res) => {
+app.post('/qrs', verificaToken,(req, res) => {
     let body = req.body
 
     let qr = {
@@ -34,7 +34,7 @@ app.post('/qrs', (req, res) => {
     Qr.create(qr).then(result => res.json(result))
 });
 
-app.put('/qrs/:id', (req, res) => {
+app.put('/qrs/:id',verificaToken, (req, res) => {
     let body = req.body
     let qr = {
         code: body.code,
@@ -53,7 +53,7 @@ app.put('/qrs/:id', (req, res) => {
             })
         })
 });
-app.delete('/qrs/:id', (req, res) => {
+app.delete('/qrs/:id', verificaToken,(req, res) => {
     Qr.destroy({
         where: {
             id: req.params.id,

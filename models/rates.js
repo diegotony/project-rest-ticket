@@ -2,42 +2,38 @@ const Sequelize = require("sequelize");
 const Model = Sequelize.Model;
 const sequelize = require("../sequelize");
 const type = Sequelize.DataTypes;
-
-class Special_Rates extends Model {}
-Special_Rates.init({
+class Rates extends Model {}
+Rates.init({
     id: {
         type: type.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    name: {
-        type: Sequelize.STRING,
+    value: {
+        type: Sequelize.FLOAT,
         validate: {
             notEmpty: true
         }
     },
-    date: {
-        type: Sequelize.DATE
+    time_rates:{
+        type: Sequelize.STRING
     }
+
 }, {
     sequelize,
-    modelName: "special_rate"
+    modelName: "rates"
 });
 
-
-
-
-// Rol.hasOne(Company, {
-//     foreignKey: "company_idcompany"
-// })
 
 sequelize
     .sync({
         force: true
     })
     .then(() => {
-        console.log(`tables special_rate created!`)
+        console.log(`tables rates created!`)
     })
-    .then(() => {});
+    .then(() => {
 
-module.exports = Special_Rates;
+    });
+
+module.exports = Rates;

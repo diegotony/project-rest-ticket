@@ -4,7 +4,6 @@ const sequelize = require("../sequelize");
 const type = Sequelize.DataTypes;
 const Rol = require("./rol")
 const Wallet = require('./wallet')
-const Service = require('./service')
 const Event = require('./event')
 class Company extends Model {}
 Company.init({
@@ -33,9 +32,6 @@ Company.hasOne(Wallet, {
     foreignKey: "company_idcompany"
 });
 
-Company.hasMany(Service, {
-    foreignKey: "company_idcompany"
-})
 
 Company.hasMany(Event, {
     foreignKey: "company_idcompany"

@@ -2,11 +2,11 @@ const Sequelize = require("sequelize");
 const Model = Sequelize.Model;
 const sequelize = require("../sequelize");
 const type = Sequelize.DataTypes;
-const Rol_has_user = require("./rol_has_user");
-const Qr = require("./qr")
-const Wallet = require('./wallet')
-const Seller_Account = require('./seller_account')
-
+const Qr = require("./qr");
+const Wallet = require('./wallet');
+const Transaction = require('./transaction');
+const Session = require('./session');
+const user_has_rol = require('./user_has_rol')
 const bcrypt = require('bcrypt');
 
 class User extends Model {}
@@ -46,11 +46,8 @@ User.init({
     modelName: "user"
 });
 
-// Rol_has.hasMany(Rol, {
-//     foreignKey: 'rol_idrol'
-// });
 
-User.hasMany(Rol_has_user, {
+User.hasMany(user_has_rol, {
     foreignKey: "rol_iduser"
 });
 
@@ -62,9 +59,14 @@ User.hasMany(Wallet, {
     foreignKey: "user_iduser"
 });
 
-User.hasMany(Seller_Account, {
+User.hasMany(Session, {
     foreignKey: "user_iduser"
-})
+});
+
+User.hasMany(Transaction, {
+    foreignKey: "user_iduser"
+});
+
 
 sequelize
     .sync({

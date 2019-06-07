@@ -2,38 +2,45 @@ const Sequelize = require("sequelize");
 const Model = Sequelize.Model;
 const sequelize = require("../sequelize");
 const type = Sequelize.DataTypes;
-const Payment = require('./payment')
-class Seller_Account extends Model {}
-Seller_Account.init({
+
+class Type_Rates extends Model {}
+Type_Rates.init({
     id: {
         type: type.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    account_nummber: {
+    name: {
         type: Sequelize.STRING,
         validate: {
             notEmpty: true
         }
-    }
+    },
+    active: {
+        type: Sequelize.BOOLEAN,
+        validate: {
+            notEmpty: true
+        }
+    },
+
 }, {
     sequelize,
-    modelName: "seller_account"
+    modelName: "type_rates"
 });
 
-Seller_Account.hasMany(Payment, {
-    foreignKey: "seller_account_idseller_account"
-});
+Type_Rates.hasMany(Rates, {
+    foreignKey: 'type_rates_idtype_rates'
+})
 
 sequelize
     .sync({
         force: true
     })
     .then(() => {
-        console.log(`tables seller_Account created!`)
+        console.log(`tables wallet created!`)
     })
     .then(() => {
 
     });
 
-module.exports = Seller_Account;
+module.exports = Type_Rates;

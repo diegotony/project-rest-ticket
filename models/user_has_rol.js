@@ -3,8 +3,10 @@ const Model = Sequelize.Model;
 const sequelize = require('../sequelize')
 const type = Sequelize.DataTypes;
 
-class Rol_has_user extends Model {}
-Rol_has_user.init({
+const Event_has_employee = require('./event_has_employee')
+
+class User_has_rol extends Model {}
+User_has_rol.init({
     id: {
         type: type.INTEGER,
         primaryKey: true,
@@ -15,8 +17,9 @@ Rol_has_user.init({
     modelName: 'rol_has_user'
 });
 
-
-
+User_has_rol.hasMany(Event_has_employee,{
+    foreignKey:'user_has_idrol'
+})
 
 sequelize.sync({
         force: true
@@ -24,14 +27,6 @@ sequelize.sync({
     .then(() => {
         console.log(`tables rol_has_user created!`)
     }).then(() => {
-        // Rol_has.create({
-        //         rol_idrol: 1,
-        //         rol_iduser: 1
-        //     }),
-        //     Rol_has.create({
-        //         rol_idrol: 2,
-        //         rol_iduser: 2
-        //     })
-    })
+    });
 
-module.exports = Rol_has_user
+module.exports = User_has_rol

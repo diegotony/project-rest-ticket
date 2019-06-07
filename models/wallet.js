@@ -3,7 +3,6 @@ const Model = Sequelize.Model;
 const sequelize = require("../sequelize");
 const type = Sequelize.DataTypes;
 const Transaction = require('./transaction')
-const Payment = require('./payment')
 class Wallet extends Model {}
 Wallet.init({
     id: {
@@ -18,7 +17,7 @@ Wallet.init({
         }
     },
     balance: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.FLOAT,
         validate: {
             notEmpty: true
         }
@@ -32,9 +31,7 @@ Wallet.init({
 Wallet.hasMany(Transaction, {
     foreignKey: 'wallet_idwallet'
 })
-Wallet.hasMany(Payment, {
-    foreignKey: 'wallet_idwallet'
-})
+
 
 sequelize
     .sync({

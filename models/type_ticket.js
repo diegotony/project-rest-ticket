@@ -2,9 +2,9 @@ const Sequelize = require("sequelize");
 const Model = Sequelize.Model;
 const sequelize = require("../sequelize");
 const type = Sequelize.DataTypes;
-const Rol_has_user = require("./user_has_rol");
-class Rol extends Model {}
-Rol.init({
+
+class Type_Ticket extends Model {}
+Type_Ticket.init({
     id: {
         type: type.INTEGER,
         primaryKey: true,
@@ -15,26 +15,32 @@ Rol.init({
         validate: {
             notEmpty: true
         }
-    }
+    },
+    active: {
+        type: Sequelize.BOOLEAN,
+        validate: {
+            notEmpty: true
+        }
+    },
+
 }, {
     sequelize,
-    modelName: "rol"
+    modelName: "type_ticket"
 });
 
-Rol.hasMany(Rol_has_user, {
-    foreignKey: "rol_idrol"
-});
-
-
+Type_Ticket.hasMany(Rates, {
+    foreignKey: 'type_ticket_idtype_ticket'
+})
 
 sequelize
     .sync({
         force: true
     })
     .then(() => {
-        console.log(`tables rol created!`)
+        console.log(`tables type_ticket created!`)
     })
     .then(() => {
+
     });
 
-module.exports = Rol;
+module.exports = Type_Ticket;

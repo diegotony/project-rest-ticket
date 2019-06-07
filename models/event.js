@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 const Model = Sequelize.Model;
 const sequelize = require("../sequelize");
 const type = Sequelize.DataTypes;
-
+const Event_has_employee = require('./event_has_employee')
 class Event extends Model {}
 Event.init({
     id: {
@@ -39,7 +39,7 @@ Event.init({
     modelName: "company"
 });
 
-
+Event.hasMany(Event_has_employee,{foreignKey:'event_idevent'})
 
 sequelize
     .sync({

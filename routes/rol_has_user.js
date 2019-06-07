@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const Rol_has = require('../models/rol_has_user')
+const Rol_has = require('../models/user_has_rol')
 
 const {
     verificaToken

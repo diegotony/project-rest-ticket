@@ -9,8 +9,14 @@ Transaction.init({
         primaryKey: true,
         autoIncrement: true
     },
-    value: {
-        type: Sequelize.INTEGER,
+    value_actual: {
+        type: Sequelize.FLOAT,
+        validate: {
+            notEmpty: true
+        }
+    },
+    value_previous: {
+        type: Sequelize.FLOAT,
         validate: {
             notEmpty: true
         }

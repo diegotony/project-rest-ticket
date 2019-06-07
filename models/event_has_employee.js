@@ -3,26 +3,19 @@ const Model = Sequelize.Model;
 const sequelize = require("../sequelize");
 const type = Sequelize.DataTypes;
 
-class Regular_Rates extends Model {}
-Regular_Rates.init({
+class Event_has_employee extends Model {}
+Event_has_employee.init({
     id: {
         type: type.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    name: {
-        type: Sequelize.STRING,
-        validate: {
-            notEmpty: true
-        }
-    },
-    date: {
-        type: Sequelize.DATE
-    }
 }, {
     sequelize,
-    modelName: "special_rate"
+    modelName: "even_has_employee"
 });
+
+
 
 
 sequelize
@@ -30,8 +23,9 @@ sequelize
         force: true
     })
     .then(() => {
-        console.log(`tables regular_rate created!`)
+        console.log(`tables event_has_employee created!`)
     })
-    .then(() => {});
+    .then(() => {
+    });
 
-module.exports = Regular_Rates;
+module.exports = Event_has_employee;

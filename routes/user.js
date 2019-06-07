@@ -3,6 +3,10 @@ const app = express()
 const User = require('../models/user')
 const bcrypt = require('bcrypt');
 
+// Validations
+const { check, validationResult } = require('express-validator/check');
+
+// tokens
 const {
     verificaToken
 } = require('../middleware/auth');
@@ -10,9 +14,7 @@ const {
 
 app.get('/users',  verificaToken,(req, res) => {
     User.findAll().then(users => res.json(users))
-})
-
-
+});
 
 app.post('/users',  (req, res) => {
     let body = req.body

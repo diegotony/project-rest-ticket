@@ -13,7 +13,7 @@ app.get('/qrs',verificaToken, (req, res) => {
 
 
 app.get('/qrs/user/:id',verificaToken, (req, res) => {
-    Qr.findAll({
+    Qr.findOne({
         where: {
             user_iduser: req.params.id,
             active: true

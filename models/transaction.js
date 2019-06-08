@@ -15,14 +15,8 @@ Transaction.init({
             notEmpty: true
         }
     },
-    value_previous: {
-        type: Sequelize.FLOAT,
-        validate: {
-            notEmpty: true
-        }
-    },
     timestamps: {
-        type: Sequelize.TIME,
+        type: Sequelize.DATE  ,
         validate: {
             notEmpty: true
         }

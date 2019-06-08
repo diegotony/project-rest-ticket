@@ -18,28 +18,19 @@ User.init({
     },
     name: {
         type: Sequelize.STRING,
-        validate: {
-            notEmpty: true
-        }
+
     },
     surname: {
         type: Sequelize.STRING,
-        validate: {
-            notEmpty: true
-        }
     },
     dni: {
         unique: true,
         type: Sequelize.STRING,
-        validate: {
-            notEmpty: true
-        }
+
     },
     pass: {
         type: Sequelize.STRING,
-        validate: {
-            notEmpty: true
-        }
+
     }
 }, {
     sequelize,
@@ -55,7 +46,7 @@ User.hasMany(Qr, {
     foreignKey: "user_iduser"
 });
 
-User.hasMany(Wallet, {
+User.hasOne(Wallet, {
     foreignKey: "user_iduser"
 });
 
@@ -77,15 +68,15 @@ sequelize
     })
     .then(() => {
         User.create({
-                name: "papu",
-                surname: "QPensabas",
-                dni: "0000014000",
-                pass: bcrypt.hashSync("lol", 10)
+                name: "Banco de Loja",
+                surname: "Banco de Loja",
+                dni: "1111111111",
+                pass: bcrypt.hashSync("12345", 10)
             }),
             User.create({
                 name: "EL Papu",
                 surname: "QPensabas",
-                dni: "0000015000",
+                dni: "1150601100",
                 pass: bcrypt.hashSync("lol", 10)
             }),
             User.create({

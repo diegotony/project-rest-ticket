@@ -61,4 +61,5 @@ app.delete('/users/:id', verificaToken, (req, res) => {
         })
     );
 });
+
 module.exports = app;

@@ -10,6 +10,7 @@ app.use(require('./company'));
 app.use(require('./qr'));
 app.use(require('./login'));
 app.use(require('./errors'));
+app.use(require('./deposito'));
 
 
 

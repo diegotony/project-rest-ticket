@@ -28,9 +28,9 @@ Company.hasMany(Rol, {
 });
 
 
-Company.hasOne(Wallet, {
-    foreignKey: "company_idcompany"
-});
+// Company.hasOne(Wallet, {
+//     foreignKey: "company_idcompany"
+// });
 
 
 Company.hasMany(Event, {
@@ -45,10 +45,10 @@ sequelize
         console.log(`tables company created!`)
     })
     .then(() => {
-        // Company.create({
-        //     name: "FERIA",
-        //     account_number: "111111111"
-        // })
+        Company.create({
+            name: "BANCO",
+            account_number: "111111111"
+        })
     });
 
 module.exports = Company;

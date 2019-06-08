@@ -40,6 +40,10 @@ sequelize
         console.log(`tables transaction created!`)
     })
     .then(() => {
+        Type_Transaction.create({
+            name: "NO DEFINIDO",
+            active: true
+        })
 
     });
 

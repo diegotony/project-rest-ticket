@@ -13,13 +13,14 @@ Wallet.init({
     wallet_number: {
         type: Sequelize.STRING,
         validate: {
-            notEmpty: true
+        
         }
     },
     balance: {
         type: Sequelize.FLOAT,
+        defaultValue: 0,
         validate: {
-            notEmpty: true
+     
         }
     },
 

@@ -35,7 +35,7 @@
     "pg-hstore": "^2.3.3",
     "rate-limiter-flexible": "^1.0.2",
     "redis": "^2.8.0",
-    "sequelize": "^5.8.6"
+    "sequelize": "^5.15.1"
   },
   "devDependencies": {
     "snyk": "^1.171.1"

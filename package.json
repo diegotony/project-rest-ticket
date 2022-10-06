@@ -38,7 +38,7 @@
     "sequelize": "^5.8.6"
   },
   "devDependencies": {
-    "snyk": "^1.171.1"
+    "snyk": "^1.996.0"
   },
   "description": "etickets system"
 }
